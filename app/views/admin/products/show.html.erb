@@ -1,0 +1,10 @@
+<h2><%= @product.title %></h2>
+<div>
+  <span>Price: <%= @product.price %></span>
+  <span>Quantity: <%= @product.quantity %></span>
+</div>
+<p><%= @product.description %></p>
+
+<div class="">
+  <%= link_to "修改商品", edit_admin_product_path(@product), class: "btn btn-primary" %>
+</div>
