@@ -11,8 +11,13 @@ Rails.application.routes.draw do
   resources :carts do
     collection do
       delete :clean
+      get :checkout
     end
   end
-  resources :cart_items 
+  resources :cart_items
+  resources :orders
+  namespace :account do
+    resources :orders 
+  end
   root 'welcome#index'
 end
