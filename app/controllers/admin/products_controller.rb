@@ -38,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product.delete
+    @product.destroy
     flash[:alert] = "商品已删除"
     redirect_to admin_products_path
   end
