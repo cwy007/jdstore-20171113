@@ -20,7 +20,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to '#' do %>
+          <%= link_to carts_path do %>
             <%= fa_icon "shopping-cart", text: "购物车" %>( <%= current_cart.products.count %> )
           <% end %>
         </li>
