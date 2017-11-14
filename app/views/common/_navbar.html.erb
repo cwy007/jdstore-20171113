@@ -15,6 +15,9 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "Products", products_path %></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if !current_user %>
           <li><%= link_to (fa_icon "sign-in", text: "注册"), new_user_registration_path %></li>
@@ -26,9 +29,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><%= link_to "JDStore 后台", admin_products_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to (fa_icon "sign-out", text: "登出"), destroy_user_session_path, method: :delete %></li>
             </ul>

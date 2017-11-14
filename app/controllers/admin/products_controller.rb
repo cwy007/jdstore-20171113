@@ -2,13 +2,13 @@ class Admin::ProductsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
   before_action :admin_required
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
@@ -16,7 +16,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def create
@@ -30,7 +29,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = "成功修改商品"
       redirect_to admin_products_path
@@ -40,7 +38,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.delete
     flash[:alert] = "商品已删除"
     redirect_to admin_products_path
@@ -49,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :quantity, :price)
+    params.require(:product).permit(:title, :description, :quantity, :price, :image)
   end
 
   def set_product
