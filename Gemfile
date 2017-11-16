@@ -40,8 +40,8 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'aasm'
-gem 'carrierwave-qiniu'
-gem 'qiniu-rs'
+gem 'carrierwave-qiniu', '~> 1.1.5'
+gem 'qiniu', '>= 6.9.0'
 gem 'figaro'
 
 group :development, :test do
