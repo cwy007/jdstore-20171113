@@ -27,6 +27,7 @@ class Order < ApplicationRecord
     state :paid
     state :shipping
     state :shipped
+    state :order_applied_cancel
     state :order_cancelled
     state :good_returned
 
@@ -48,8 +49,12 @@ class Order < ApplicationRecord
       transitions from: :shipped, to: :good_returned
     end
 
+    event :apply_cancel do
+      transitions from: [:order_placed, :paid], to: :order_applied_cancel
+    end
+
     event :cancel_order do
-      transitions from: [:order_placed, :paid], to: :order_cancelled
+      transitions from: :order_applied_cancel, to: :order_cancelled
     end
   end
 end

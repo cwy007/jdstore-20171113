@@ -59,7 +59,7 @@
       <% end %>
     </div>
 
-    <% if !@order.is_paid? %>
+    <% if !@order.is_paid? && !@order.order_applied_cancel?%>
       <div class="group text-right">
         <%= link_to "以支付宝支付", pay_with_alipay_order_path(@order.token),
                     method: :post, class: "btn btn-primary" %>
@@ -67,7 +67,7 @@
                     method: :post, class: "btn btn-success" %>
       </div>
     <% else %>
-      <p class="text-center text-success lead">此订单已完成付款</p>
+      <p class="text-center text-success lead">此订单已 <%= @order.aasm_state %></p>
     <% end %>
   </div>
 </div>
