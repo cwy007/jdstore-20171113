@@ -14,6 +14,7 @@ class Admin::OrdersController < ApplicationController
 
   def ship
     @order.ship!
+    OrderMailer.notify_ship(@order).deliver!
     redirect_back(fallback_location: admin_root_path)
   end
 
@@ -24,6 +25,7 @@ class Admin::OrdersController < ApplicationController
 
   def cancel
     @order.cancel_order!
+    OrderMailer.notify_cancel(@order).deliver!
     redirect_back(fallback_location: admin_root_path)
   end
 
