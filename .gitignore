@@ -27,3 +27,6 @@
 public/uploads
 
 erd.pdf
+
+# Ignore application configuration
+/config/application.yml
