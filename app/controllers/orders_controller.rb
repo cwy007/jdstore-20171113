@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
       end
       current_cart.clean!
       OrderMailer.notify_order_placed(@order).deliver
+      flash[:notice] = "订单明细已发送到邮箱 #{@order.user.email}"
       redirect_to order_path(@order.token)
     else
       render 'carts/checkout'
